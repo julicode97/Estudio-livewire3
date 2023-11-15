@@ -6,6 +6,7 @@ use Livewire\Component;
 
 class Paises extends Component
 {
+    public $open = true;
     public $paises = [
         'Colombia',
         'Perú',
@@ -37,6 +38,12 @@ class Paises extends Component
     {
         $this->count++;
     }
+
+    // public function resetear()
+    // {
+    //     $this->count = 0;
+    // }
+
 
     public function render()
     {
