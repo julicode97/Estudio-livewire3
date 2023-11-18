@@ -12,7 +12,8 @@
                 'user' => 1
                 ]) --}}
             {{-- <livewire:contador> --}}
-            <livewire:paises>
+            {{-- <livewire:paises> --}}
+                <livewire:formulario>
         </div>
     </div>
 </x-app-layout>
