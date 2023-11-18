@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('image_path')->nullable();
-            $table->boolean('is_published')->nullable(false);
+            $table->boolean('is_published')->default(false);
             $table->timestamps();
         });
     }
