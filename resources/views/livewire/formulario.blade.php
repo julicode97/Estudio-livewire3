@@ -3,15 +3,21 @@
         <form wire:submit="save">
             <div class="mb-4">
                 <x-label>Nombre</x-label>
-                <x-input class="w-full" wire:model="title" required></x-input>
+                <x-input class="w-full" wire:model="postCreate.title" ></x-input>
+                @error('postCreate.title')
+                <x-input-error for="postCreate.title"></x-input-error>
+                @enderror
             </div>
             <div class="mb-4">
                 <x-label>Contenido</x-label>
-                <x-textarea class="w-full" wire:model="content" required></x-textarea>
+                <x-textarea class="w-full" wire:model="postCreate.content" ></x-textarea>
+                @error('postCreate.content')
+                <x-input-error for="postCreate.content"></x-input-error>
+                @enderror
             </div>
             <div class="mb-4">
                 <x-label>Categoria</x-label>
-                <x-select class="w-full" wire:model="category_id" required>
+                <x-select class="w-full" wire:model="postCreate.category_id">
                     <option value="" disabled>
                         Seleccione una categoria
                     </option>
@@ -21,6 +27,9 @@
                         </option>
                     @endforeach
                 </x-select>
+                @error('postCreate.category_id')
+                <x-input-error for="postCreate.category_id"></x-input-error>
+                @enderror
             </div>
             <div class="mb-4">
                 <x-label>Etiquetas</x-label>
@@ -28,11 +37,14 @@
                     @foreach ($tags as $tag)
                         <li>
                             <label>
-                                <x-checkbox wire:model="selectedTags" value="{{$tag->id}}"/>
+                                <x-checkbox wire:model="postCreate.tags" value="{{$tag->id}}"/>
                                 {{ $tag->name }}
                             </label>
                         </li>
                     @endforeach
+                    @error('postCreate.tags')
+                    <x-input-error for="postCreate.tags"></x-input-error>
+                    @enderror
                 </ul>
             </div>
             <div class="flex justify-end">
