@@ -73,7 +73,7 @@
 
     </div>
     {{-- formulario de edicion --}}
-    <x-dialog-modal wire:model="open">
+    <x-dialog-modal wire:model="postEdit.open">
         <form wire:submit="update">
         <x-slot name="title">
             Actualizar Post
@@ -83,10 +83,16 @@
                 <div class="mb-4">
                     <x-label>Nombre</x-label>
                     <x-input class="w-full" wire:model="postEdit.title" required></x-input>
+                    @error('postEdit.title')
+                    <x-input-error for="postEdit.title"></x-input-error>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <x-label>Contenido</x-label>
                     <x-textarea class="w-full" wire:model="postEdit.content" required></x-textarea>
+                    @error('postEdit.content')
+                    <x-input-error for="postEdit.content"></x-input-error>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <x-label>Categoria</x-label>
@@ -100,6 +106,9 @@
                             </option>
                         @endforeach
                     </x-select>
+                    @error('postEdit.category_id')
+                    <x-input-error for="postEdit.category_id"></x-input-error>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <x-label>Etiquetas</x-label>
@@ -112,6 +121,9 @@
                                 </label>
                             </li>
                         @endforeach
+                        @error('postEdit.tags')
+                        <x-input-error for="postEdit.tags"></x-input-error>
+                        @enderror
                     </ul>
                 </div>
 
@@ -121,7 +133,7 @@
             <div class="flex justify-end">
                 <x-danger-button
                     class="mr-2"
-                    wire:click="$set('open', false)"
+                    wire:click="$set('postEdit.open', false)"
                 >
                     Cancelar
                 </x-danger-button>
